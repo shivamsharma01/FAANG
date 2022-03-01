@@ -27,7 +27,7 @@ public class MinimizeTheMaxDifferenceBetweenHeights {
 				arr[i] = Integer.parseInt(data[i]);
 			}
 			fileOutput = Integer.parseInt(read.readLine());
-			System.out.println(Arrays.toString(arr));
+			System.out.println(k + " " + Arrays.toString(arr) + " -> " + fileOutput);
 			int ans = getMinDiff(arr, n, k);
 			if (ans != fileOutput)
 				System.out.println("Incorrect output -> " + ans);
@@ -40,9 +40,15 @@ public class MinimizeTheMaxDifferenceBetweenHeights {
 		Arrays.sort(arr);
 		int ans = arr[n - 1] - arr[0], left = arr[0] + k, right = arr[n - 1] - k;
 		int min, max;
+		System.out.println("smallest is " + arr[0] + ", largest is " + arr[n - 1]);
+		System.out.println("ans at start is " + ans);
 		for (int i = 1; i < n; i++) {
 			min = Math.min(left, arr[i] - k);
+			System.out.println(
+					"min(left: " + left + ", arr[" + i + "] - " + k + " = " + arr[i] + " - " + k + ") = " + min);
 			max = Math.max(arr[i - 1] + k, right);
+			System.out.println("max(arr[" + (i - 1) + "] +" + k + ", right :" + right + ")");
+			System.out.println(String.format("min(%d, %d)", ans, max - min));
 			ans = Math.min(ans, max - min);
 		}
 		return ans;
