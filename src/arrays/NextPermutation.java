@@ -59,10 +59,10 @@ public class NextPermutation {
 			int left = index - 1, right = index;
 			i = index;
 			while (++i < n) {
-				if (nums[left] < nums[i])
-					right = i;
+				if (nums[left] >= nums[i])
+					break;
+				right = i;
 			}
-
 			temp = nums[left];
 			nums[left] = nums[right];
 			nums[right] = temp;
